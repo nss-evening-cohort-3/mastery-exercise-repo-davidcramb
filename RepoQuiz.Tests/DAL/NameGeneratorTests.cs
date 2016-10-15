@@ -32,6 +32,14 @@ namespace RepoQuiz.Tests.DAL
             Assert.AreEqual(expectedName, actualName);
         }
         [TestMethod]
+        public void EnsureMajorAccess()
+        {
+            NameGenerator major = new NameGenerator();
+            string actualMajor = major.MajorCollection[0];
+            string expectedMajor = "Underwater Basket Weaving";
+            Assert.AreEqual(expectedMajor, actualMajor);
+        }
+        [TestMethod]
         public void EnsureGetRandomNameFromListWithMethod()
         {
             NameGenerator randomLastName = new NameGenerator();
@@ -40,13 +48,25 @@ namespace RepoQuiz.Tests.DAL
             Console.WriteLine(actualName);
             Console.WriteLine(expectedName);
             //Once namepool array has all names, the chance that both vars will have the same output is very slim, but it is still possible this test may fail. Ideally, expected and actual name will be different instances.
+            //I'm refactoring this method to remain DRY but keeping the old method and this test
             Assert.AreNotEqual(expectedName, actualName);
         }
         [TestMethod]
-        public void EnsureGetRandomMethodWorksOnFirstName()
+        public void EnsureGetRandomNameOrMajorWorksWithParameterOfList()
         {
-            NameGenerator randomFirstName = new NameGenerator();
-            //string firstNameInstance = randomFirstName.GetRandomomFirstName;
+
+            NameGenerator NameGen = new NameGenerator();
+            string fname1 = NameGen.GetRandomNameOrMajor(NameGen.FirstNameCollection);
+            string fname2 = NameGen.GetRandomNameOrMajor(NameGen.FirstNameCollection);
+            Assert.AreNotEqual(fname1, fname2);
+
+            string lname1 = NameGen.GetRandomNameOrMajor(NameGen.LastNameCollection);
+            string lname2 = NameGen.GetRandomNameOrMajor(NameGen.LastNameCollection);
+            Assert.AreNotEqual(lname1, lname2);
+
+            string major1 = NameGen.GetRandomNameOrMajor(NameGen.MajorCollection);
+            string major2 = NameGen.GetRandomNameOrMajor(NameGen.MajorCollection);
+            Assert.AreNotEqual(major1, major2);
         }
     }
 }

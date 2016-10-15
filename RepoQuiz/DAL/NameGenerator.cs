@@ -15,16 +15,25 @@ namespace RepoQuiz.DAL
         }
         public List<string> FirstNameCollection { get { return FirstNameArray.ToList(); } }
         public List<string> LastNameCollection { get { return LastNameArray.ToList(); } }
+        public List<string> MajorCollection { get { return MajorArray.ToList(); } }
 
-        public string[] FirstNameArray = { "Ace", "Bob", "Charles", "Dennis", "Edward", "Franklin", "Gary", "Harry", "India", "Jill", "Killian", "Lana" };
-        public string[] LastNameArray = { "Argonian", "Breton", "Crowley", "Decimalpoint", "Factoid", "Gradius", "Harp", "Iguanadon", "Jernigan", "Kroninberg", "Logoslow" };
-
+        private string[] FirstNameArray = { "Ace", "Bob", "Charles", "Dennis", "Edward", "Franklin", "Gary", "Harry", "India", "Jill", "Killian", "Lana" };
+        private string[] LastNameArray = { "Argonian", "Breton", "Crowley", "Decimalpoint", "Factoid", "Gradius", "Harp", "Iguanadon", "Jernigan", "Kroninberg", "Logoslow" };
+        private string[] MajorArray = { "Underwater Basket Weaving", "Gendered Glacier Studies", "Horology", "Dairy Herd Management", "Paranormal Extermination", "Xenomorph Diplomacy", "Sophism", "Animal Waste Identification" };
  
+
+
         public string GetRandomLastName()
         {
             var rnd = RandomHelper.rnd;
             string randomLastName = LastNameCollection[rnd.Next(0, LastNameCollection.Count())];
             return randomLastName;
+        }
+        public string GetRandomNameOrMajor(List<string> Collection)
+        {
+            var rnd = RandomHelper.rnd;
+            string randomNameOrMajor = Collection[rnd.Next(0, Collection.Count())];
+            return randomNameOrMajor;
         }
     }
     class RandomHelper
