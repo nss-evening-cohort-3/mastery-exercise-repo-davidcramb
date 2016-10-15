@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Moq;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RepoQuiz.DAL;
 
@@ -54,7 +55,6 @@ namespace RepoQuiz.Tests.DAL
         [TestMethod]
         public void EnsureGetRandomNameOrMajorWorksWithParameterOfList()
         {
-
             NameGenerator NameGen = new NameGenerator();
             string fname1 = NameGen.GetRandomNameOrMajor(NameGen.FirstNameCollection);
             string fname2 = NameGen.GetRandomNameOrMajor(NameGen.FirstNameCollection);
@@ -67,6 +67,16 @@ namespace RepoQuiz.Tests.DAL
             string major1 = NameGen.GetRandomNameOrMajor(NameGen.MajorCollection);
             string major2 = NameGen.GetRandomNameOrMajor(NameGen.MajorCollection);
             Assert.AreNotEqual(major1, major2);
+        }
+        [TestMethod]
+        public void EnsureCreateStudentReturnsAStudent()
+        {
+            NameGenerator nameGen = new NameGenerator();
+            string[] Student = nameGen.CreateStudentWithMajor();
+            Assert.IsTrue(nameGen.FirstNameCollection.Any(Student[0].Contains));
+            Assert.IsTrue(nameGen.LastNameCollection.Any(Student[1].Contains));
+            Assert.IsTrue(nameGen.MajorCollection.Any(Student[2].Contains));
+
         }
     }
 }

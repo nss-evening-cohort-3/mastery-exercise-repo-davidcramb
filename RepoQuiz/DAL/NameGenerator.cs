@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using RepoQuiz.Models;
 
 namespace RepoQuiz.DAL
 {
@@ -21,7 +22,7 @@ namespace RepoQuiz.DAL
         private string[] LastNameArray = { "Argonian", "Breton", "Crowley", "Decimalpoint", "Factoid", "Gradius", "Harp", "Iguanadon", "Jernigan", "Kroninberg", "Logoslow" };
         private string[] MajorArray = { "Underwater Basket Weaving", "Gendered Glacier Studies", "Horology", "Dairy Herd Management", "Paranormal Extermination", "Xenomorph Diplomacy", "Sophism", "Animal Waste Identification" };
  
-
+                       
 
         public string GetRandomLastName()
         {
@@ -34,6 +35,19 @@ namespace RepoQuiz.DAL
             var rnd = RandomHelper.rnd;
             string randomNameOrMajor = Collection[rnd.Next(0, Collection.Count())];
             return randomNameOrMajor;
+        }
+
+
+            Student RandomizedStudent = new Student();
+
+        public string[] CreateStudentWithMajor()
+        {
+            string[] student = new string[3];
+            student[0] = GetRandomNameOrMajor(FirstNameCollection);
+            student[1] = GetRandomNameOrMajor(LastNameCollection);
+            student[2]= GetRandomNameOrMajor(MajorCollection);
+            return student;
+
         }
     }
     class RandomHelper
