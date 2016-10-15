@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Student List";
+    ViewBag.FirstName = "First Name";
+    ViewBag.LastName = "Last Name";
+    ViewBag.Major = "Major";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table>
+    <tr>
+        <th>@ViewBag.FirstName</th><th>@ViewBag.LastName</th><th>@ViewBag.Major</th>
+    </tr>
+    @{ foreach (var student in ViewBag.AllStudents)
+        {
+            <tr><td>@student.FirstName</td><td>@student.LastName</td><td>@student.Major</td></tr>
+        }}
+</table>
+
