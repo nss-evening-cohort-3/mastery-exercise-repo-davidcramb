@@ -5,12 +5,21 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RepoQuiz.Models;
 using RepoQuiz.DAL;
+using System.Web.Mvc;
 
 namespace RepoQuiz.Tests.DAL
 {
     [TestClass]
     public class NameGeneratorTests
     {
+
+        //[testinitialize]
+        //public void testinitialize()
+        //{
+        //    mock student = new mock<student>();
+        //    student.setup(x => x.)
+        //}
+
         [TestMethod]
         public void EnsureInstanceofNameGenerator()
         {
@@ -86,5 +95,6 @@ namespace RepoQuiz.Tests.DAL
             Assert.IsInstanceOfType(newStudent, typeof(Student));
             Assert.IsTrue(nameGen.FirstNameCollection.Any(newStudent.FirstName.Contains));
         }
+
     }
 }
