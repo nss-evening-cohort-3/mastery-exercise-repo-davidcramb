@@ -22,5 +22,11 @@ namespace RepoQuiz.DAL
         {
             return Context.Students.ToList();
         }
+
+        public Student AddStudent(Student student)
+        {
+            Context.Students.Add(student);
+            return student;
+        }
     }
 }
