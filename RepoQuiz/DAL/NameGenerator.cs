@@ -38,7 +38,6 @@ namespace RepoQuiz.DAL
         }
 
 
-            Student RandomizedStudent = new Student();
 
         public string[] CreateStudentWithMajor()
         {
@@ -47,7 +46,16 @@ namespace RepoQuiz.DAL
             student[1] = GetRandomNameOrMajor(LastNameCollection);
             student[2]= GetRandomNameOrMajor(MajorCollection);
             return student;
+        }
 
+        public Student RandomizedStudent()
+        {
+            Student student = new Student();
+            string[] randomStudentResult = CreateStudentWithMajor();
+            student.FirstName = randomStudentResult[0];
+            student.LastName = randomStudentResult[1];
+            student.Major = randomStudentResult[2];
+            return student;
         }
     }
     class RandomHelper

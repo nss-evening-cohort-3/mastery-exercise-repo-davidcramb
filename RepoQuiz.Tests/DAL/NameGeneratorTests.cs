@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Moq;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RepoQuiz.Models;
 using RepoQuiz.DAL;
 
 namespace RepoQuiz.Tests.DAL
@@ -76,7 +77,14 @@ namespace RepoQuiz.Tests.DAL
             Assert.IsTrue(nameGen.FirstNameCollection.Any(Student[0].Contains));
             Assert.IsTrue(nameGen.LastNameCollection.Any(Student[1].Contains));
             Assert.IsTrue(nameGen.MajorCollection.Any(Student[2].Contains));
-
+        }
+        [TestMethod]
+        public void EnsureCanCreateStudentObjectConstructedByMethod()
+        {
+            NameGenerator nameGen = new NameGenerator();
+            Student newStudent = nameGen.RandomizedStudent();
+            Assert.IsInstanceOfType(newStudent, typeof(Student));
+            Assert.IsTrue(nameGen.FirstNameCollection.Any(newStudent.FirstName.Contains));
         }
     }
 }
