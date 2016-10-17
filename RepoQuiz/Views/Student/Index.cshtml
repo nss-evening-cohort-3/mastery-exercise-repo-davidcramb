@@ -8,14 +8,15 @@
 
 <h2>@ViewBag.Title</h2>
 
-
-<table>
-    <tr>
-        <th>@ViewBag.FirstName</th><th>@ViewBag.LastName</th><th>@ViewBag.Major</th>
-    </tr>
-    @{ foreach (var student in ViewBag.AllStudents)
-        {
-            <tr><td>@student.FirstName</td><td>@student.LastName</td><td>@student.Major</td></tr>
-        }}
-</table>
+<div class="center">
+    <table class="table table-hover">
+        <tr>
+            <th>@ViewBag.FirstName</th><th>@ViewBag.LastName</th><th>@ViewBag.Major</th>
+        </tr>
+        @{ foreach (var student in ViewBag.AllStudents)
+            {
+                <tr><td>@student.FirstName</td><td>@student.LastName</td><td>@student.Major</td></tr>
+            }}
+    </table>
+</div>
 
